@@ -15,7 +15,7 @@ app.get('/price/:network', (req, res) => {
     let cached = cache.get("ethereum")
     if (cached != undefined) {
         const wei = web3.utils.toWei(cached.SafeGasPrice, 'Gwei')
-        return res.json({ price: cached.SafeGasPrice })
+        return res.json({ price: wei })
     }
 
     let config = {
