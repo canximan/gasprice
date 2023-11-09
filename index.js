@@ -1,6 +1,7 @@
 const express = require('express')
 const axios = require('axios');
-const cors = require('cors')
+const cors = require('cors');
+const web3 = require('web3')
 const NodeCache = require('node-cache')
 
 const cache = new NodeCache()
@@ -13,6 +14,7 @@ app.get('/price/:network', (req, res) => {
   if (req.params.network == 'ethereum') {
     let cached = cache.get("ethereum")
     if (cached != undefined) {
+        const wei = web3.utils.toWei(cached.SafeGasPrice, 'Gwei')
         return res.json({ price: cached.SafeGasPrice })
     }
 
@@ -28,8 +30,9 @@ app.get('/price/:network', (req, res) => {
             return res.status(500)
         }
 
-        cache.set( "ethereum", response.data.result, 5 );
-        return res.json({ price: response.data.result.SafeGasPrice })
+        cache.set("ethereum", response.data.result, 5);
+        const wei = web3.utils.toWei(response.data.result.SafeGasPrice, 'Gwei')
+        return res.json({ price: wei })
       })
       .catch((error) => {
         console.log("Failed to get etherscan gas price", error)
