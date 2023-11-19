@@ -61,7 +61,7 @@ app.get('/:coin/price', (req, res) => {
           return res.status(500).send("Internal Server Error")
         }
 
-        cache.set("eth", response.data.data["1027"].quote.USD.price, 15);
+        cache.set("eth", response.data.data["1027"].quote.USD.price, 300);
         return res.json({ ethereum: { usd: response.data.data["1027"].quote.USD.price } })
       })
       .catch((error) => {
