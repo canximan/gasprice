@@ -52,7 +52,7 @@ app.get('/:coin/price', (req, res) => {
     let config = {
         method: 'get',
         maxBodyLength: Infinity,
-        url: 'https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?CMC_PRO_API_KEY=4c18fb42-0f4d-47aa-803b-e59cf82a1b27&id=1027',
+        url: 'https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?CMC_PRO_API_KEY=cb7b9aee-09ac-4fb1-9147-ca66c188084f&id=1027',
       };
       
       axios.request(config)
