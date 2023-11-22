@@ -43,7 +43,6 @@ app.get('/price/:network', (req, res) => {
 
 app.get('/:coin/price', (req, res) => {
   if (req.params.coin == 'eth') {
-    console.log("request eth price")
     let cached = cache.get("eth")
     if (cached != undefined) {
         return res.json({ ethereum: { usd: cached } })
