@@ -21,7 +21,7 @@ app.get('/price/:network', (req, res) => {
     let config = {
         method: 'get',
         maxBodyLength: Infinity,
-        url: 'https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=58F719I6WFJ5T83YMJ5IYWEJGQCUWBH8YG',
+        url: 'https://api.etherscan.io/v2/api?chainid=1&module=gastracker&action=gasoracle&apikey=58F719I6WFJ5T83YMJ5IYWEJGQCUWBH8YG',
       };
       
       axios.request(config)
